@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     
     get 'register', to: 'devise/registrations#new'
     post 'register', to: 'devise/registrations#create'
+
+    get 'confirm/:confirmation_token', to: 'devise/confirmations#show'
   end
 
 end

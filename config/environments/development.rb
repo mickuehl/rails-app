@@ -37,12 +37,14 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :authentication => :plain,
+    :enable_starttls_auto => true,
     :address => Rails.application.credentials.smtp_address,
     :port => Rails.application.credentials.smtp_port,
     :domain => Rails.application.credentials.smtp_domain,
     :user_name => Rails.application.credentials.smtp_user_name,
     :password => Rails.application.credentials.smtp_password
   }
+  config.action_mailer.default_url_options = { :host => Rails.application.credentials.base_url }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -68,7 +70,4 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # additional configuration
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  
 end
